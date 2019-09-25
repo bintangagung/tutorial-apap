@@ -94,18 +94,30 @@ public class RestoranController {
     }
 
     //Tambahkan fitur untuk melakukan delete Restoran berdasarkan idRestoran
-//    @GetMapping("/restoran/delete/{idRestoran}")
-//    public String deleteRestoran(
-//            @PathVariable(value = "idRestoran") String idRestoran,
-//            Model model) {
-//        // Mengambil objek RestoranModel yang dicari
-//        RestoranModel resto = restoranService.getRestoranByIdRestoran(idRestoran);
-//        // Add model restoran untuk dirender
-//        model.addAttribute("idRestoran", idRestoran);
-//        // delete restoran
-//
-//        // return view template
-//        return "delete-restoran";
-//    }
+    // LATIHAN 2
+		@RequestMapping(value = "/restoran/delete/id/{idRestoran}")
+		public String delete(
+				@PathVariable(value = "idRestoran", required = true) String idRestoran,
+				Model model) {
+
+			// Null checking for idRestoran
+			if (restoranService.getRestoranByIdRestoran(idRestoran) != null) {
+				// Memanggil service "getRestoranByIdRestoran"
+				RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+
+				// Memanggil service "deleteRestoran"
+				restoranService.deleteRestoran(restoran);
+
+				// Add objek restoran ke "resto"
+				model.addAttribute("namaResto", restoran.getNama());
+
+				// Return view template
+				return "delete-restoran";
+			}
+			// Return halaman error
+			else {
+				return "delete-restoran-error";
+			}
+		}
 
 }

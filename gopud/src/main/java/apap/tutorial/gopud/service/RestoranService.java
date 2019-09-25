@@ -15,4 +15,7 @@ public interface RestoranService {
 
     // Method untuk mendapatkan data sebuah Restoran berdasarkan idRestoran
     RestoranModel getRestoranByIdRestoran(String idRestoran);
+
+    // LATIHAN 3
+    void deleteRestoran(RestoranModel restoran);
 }
