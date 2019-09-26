@@ -17,5 +17,9 @@ public interface RestoranService {
 
     RestoranModel changeRestoran(RestoranModel restoranModel);
 
+    //viewAll
     List<RestoranModel> getRestoranListOrderByNama();
+
+    //method delete restoran
+    void deleteRestoran(RestoranModel restoran);
 }

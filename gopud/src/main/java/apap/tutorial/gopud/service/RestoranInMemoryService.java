@@ -45,4 +45,9 @@ public class RestoranInMemoryService implements RestoranService {
     public List<RestoranModel> getRestoranListOrderByNama() {
         return null;
     }
+
+    @Override
+    public void deleteRestoran(RestoranModel restoran) {
+
+    }
 }

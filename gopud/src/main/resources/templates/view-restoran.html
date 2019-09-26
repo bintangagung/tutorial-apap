@@ -12,6 +12,8 @@
 <h3 th:text="'Nomor Telp. Restoran: ' + ${resto.nomorTelepon}"></h3>
 
 <td><a th:href="@{/restoran/change/}+${resto.idRestoran}"> Change Data Restoran </a></td>
+<br>
+<td><a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a></td>
 
 <h2> Daftar Menu: </h2>
 

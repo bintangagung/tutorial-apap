@@ -98,4 +98,21 @@ public class RestoranController {
         return "view-all-restoran";
     }
 
+    //delete restoran
+    @RequestMapping(path = "/restoran/delete/{idRestoran}", method = RequestMethod.GET)
+    public String deleteRestoran(@PathVariable Long idRestoran, Model model) {
+        // Mengambil objek RestoranModel yang dituju
+        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+        if (restoran.getListMenu().isEmpty()) {
+            restoranService.deleteRestoran(restoran);
+            model.addAttribute("restoran", restoran);
+            return "delete-restoran";
+        }
+        else {
+            model.addAttribute("restoran", restoran);
+            return "delete-restoran-gagal";
+        }
+    }
+
+
 }

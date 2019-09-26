@@ -46,5 +46,8 @@ public class RestoranServiceImpl implements RestoranService {
     public List<RestoranModel> getRestoranListOrderByNama() {
         return restoranDb.findAllByOrderByNamaAsc();
     }
+
+    @Override
+    public void deleteRestoran(RestoranModel restoran) { restoranDb.delete(restoran); }
     
 }
