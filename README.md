@@ -97,9 +97,9 @@ JPA Repository memudahkan untuk melakukan CRUD (CREATE, READ, UPDATE, serta DELE
 4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
 MenuModel dibuat?
 Restoran Model
-![Image description](https://drive.google.com/file/d/12qmP22XJ9V6MtAYYz-18_yz-sji2C7fZ/view?usp=sharing)
+![Image description](https://ibb.co/85S278S)
 Menu Model
-![Image description](https://drive.google.com/file/d/1-t70uEX9Qpbwglqr4_SLhHs16_7dsONZ/view?usp=sharing)
+![Image description](https://ibb.co/sgsTBVy)
 terhubungnya relasi tersebut disebabkan pada MenuModel memiliki atribut dengan tipe relasi ManyToOne kepada RestoranModel.
 Dan RestoranModel memliki atribut dengan tipe relasai OneToMany dan dipetakkan ke MenuModel.
 5. Jelaskan kegunaan FetchType.LAZY , CascadeType.ALL , dan FetchType.EAGER
