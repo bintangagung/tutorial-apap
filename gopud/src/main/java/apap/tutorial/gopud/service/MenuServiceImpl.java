@@ -5,7 +5,8 @@ import apap.tutorial.gopud.repository.MenuDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;;
+import java.util.List;
+import java.util.Optional;;
 
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -20,5 +21,27 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuModel> findAllMenuByIdRestoran(long idRestoran) {
         return menuDb.findByRestoranIdRestoran(idRestoran);
+    }
+
+    @Override
+    public Optional<MenuModel> getMenuById (Long id) {
+        return menuDb.findById(id);
+    }
+
+    @Override
+    public MenuModel changeMenu(MenuModel menuModel) {
+        //mengambil object restoran yang ingin diubah
+        MenuModel targetMenu = menuDb.findById(menuModel.getId()).get();
+
+        try {
+            targetMenu.setNama(menuModel.getNama());
+            targetMenu.setHarga(menuModel.getHarga());
+            targetMenu.setDurasiMasak(menuModel.getDurasiMasak());
+            targetMenu.setDeskripsi(menuModel.getDeskripsi());
+            menuDb.save(targetMenu);
+            return targetMenu;
+        } catch (NullPointerException nullException) {
+            return null;
+        }
     }
 }
