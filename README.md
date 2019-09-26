@@ -80,3 +80,29 @@ juga bukti screenshot mu.
 list restoran-restoran yang telah ditambahkan
 ![](https://files.catbox.moe/ut6tqw.PNG)
 
+
+
+
+Tutorial 3
+1. Pada class MenuDb, terdapat method findByRestoranIdRestoran , apakah kegunaan dari
+method tersebut?
+method findByRestoranIdRestoran akan melakukan pencarian mune yang terdapat pada objek RestoranModel.
+Method ini akan mereturn list yang berisi menu-menu yang tersedia.
+2. Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan
+addRestoranSubmit?
+method addRestoranFormPage menggunakan method GET yang berarti pada method addRestoranFormPage akan mengambil form yang telah ada untuk menambahkan sebuah restoran.
+Sedangkan untuk method addRestoranSubmit, method yang dilakukan ialah POST yang berarti pada method ini ketika dijalankan akan memposting data yang sudah diisi pada form ke database untuk disimpan
+3. Jelaskan apa kegunaan dari JPA Repository?
+JPA Repository memudahkan untuk melakukan CRUD (CREATE, READ, UPDATE, serta DELETE) pada database.
+4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
+MenuModel dibuat?
+Restoran Model
+![Image description](https://drive.google.com/file/d/12qmP22XJ9V6MtAYYz-18_yz-sji2C7fZ/view?usp=sharing)
+Menu Model
+![Image description](https://drive.google.com/file/d/1-t70uEX9Qpbwglqr4_SLhHs16_7dsONZ/view?usp=sharing)
+terhubungnya relasi tersebut disebabkan pada MenuModel memiliki atribut dengan tipe relasi ManyToOne kepada RestoranModel.
+Dan RestoranModel memliki atribut dengan tipe relasai OneToMany dan dipetakkan ke MenuModel.
+5. Jelaskan kegunaan FetchType.LAZY , CascadeType.ALL , dan FetchType.EAGER
+FetchType.LAZY berfungsi ketika kita mengeload suatu table dari database, database hanya akan mengeload hanya sesuatu yang kita butuhkan (misal .getNama()).
+CascadeType.ALL ketika terjadi sesuatu pada suatu entitas, maka entitas yang terferensi oleh entitas tersebut akan ikut mengalami kejadian yang sama (misal X di delete, maka entitas lain yang tereferensi oleh X juga ikut di delete).
+FetchType.EAGER berfungsi ketika kita mengeload suatu table dari database, database akan mengeload secara EAGER semua yang ada pada tabel tersebut.
