@@ -16,4 +16,6 @@ public interface RestoranService {
     Optional<RestoranModel> getRestoranByIdRestoran(Long idRestoran);
 
     RestoranModel changeRestoran(RestoranModel restoranModel);
+
+    List<RestoranModel> getRestoranListOrderByNama();
 }

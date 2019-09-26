@@ -41,4 +41,10 @@ public class RestoranServiceImpl implements RestoranService {
             return null;
         }
     }
+
+    @Override
+    public List<RestoranModel> getRestoranListOrderByNama() {
+        return restoranDb.findAllByOrderByNamaAsc();
+    }
+    
 }

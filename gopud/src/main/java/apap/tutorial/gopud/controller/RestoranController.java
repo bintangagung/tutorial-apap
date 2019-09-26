@@ -77,7 +77,7 @@ public class RestoranController {
         return "form-change-restoran";
     }
 
-    //API yang digunakan untuk submit form change rsetoran
+    //API yang digunakan untuk submit form change restoran
     @RequestMapping(value = "restoran/change/{idRestoran}", method = RequestMethod.POST)
     public String changeRestoranFormSubmit(@PathVariable Long idRestoran, @ModelAttribute RestoranModel restoran, Model model) {
         //mengambil existing data restoran
@@ -86,6 +86,23 @@ public class RestoranController {
         model.addAttribute("restoran", newRestoranData);
 
         return "change-restoran";
+    }
+
+    //tampilan viewAll
+    @RequestMapping(path = "/restoran/view-all")
+    public String viewAll(Model model) {
+        List<RestoranModel> restoranList = restoranService.getRestoranList();
+        List<RestoranModel> restoranListAlphabet = restoranService.getRestoranListOrderByNama();
+
+        model.addAttribute("restoranList", restoranList);
+        model.addAttribute("restoranListAlphabet", restoranListAlphabet);
+//
+//        System.out.println("wkokowokwko");
+//        for (RestoranModel restoran : restoranList){
+//            System.out.println(restoran.getNama());
+//        }
+        // return view template
+        return "view-all-restoran";
     }
 
 }
