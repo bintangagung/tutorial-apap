@@ -12,4 +12,6 @@ public interface MenuService {
 
     // Method untuk mendapatkan data sebuah Menu berdasarkan id
     Optional<MenuModel> getMenuById(Long id);
+
+    void deleteMenu(MenuModel menu);
 }

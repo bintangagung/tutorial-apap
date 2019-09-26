@@ -60,4 +60,20 @@ public class MenuController {
         return "change-menu-restoran";
     }
 
+    //delete menu
+    @RequestMapping(path = "/restoran/menu/delete/{id}", method = RequestMethod.GET)
+    public String deleteMenu(@PathVariable Long id, Model model) {
+        // Mengambil objek MenuModel yang dituju
+        MenuModel menu = menuService.getMenuById(id).get();
+//        if (menu.get RestoranService.getRestoranByIdRestoran(idRestoran).get().isEmpty()) {
+//            model.addAttribute("menu", menu);
+//            return "delete-menu-gagal";
+//        }
+//        else {
+            menuService.deleteMenu(menu);
+            model.addAttribute("menu", menu);
+            return "delete-menu";
+//        }
+    }
+
 }

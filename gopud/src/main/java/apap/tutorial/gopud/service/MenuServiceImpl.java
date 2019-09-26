@@ -44,4 +44,8 @@ public class MenuServiceImpl implements MenuService {
             return null;
         }
     }
+
+    @Override
+    public void deleteMenu(MenuModel menu) { menuDb.delete(menu); }
+
 }
