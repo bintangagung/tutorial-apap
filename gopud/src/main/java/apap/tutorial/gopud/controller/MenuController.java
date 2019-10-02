@@ -29,6 +29,7 @@ public class MenuController {
         menu.setRestoran(restoran);
 
         model.addAttribute("menu", menu);
+        model.addAttribute("navbarTitle", "Add Menu");
 
         return "form-add-menu";
     }
@@ -47,6 +48,7 @@ public class MenuController {
         //mengambil existing data restoran
         MenuModel existingMenu = menuService.getMenuById(id).get();
         model.addAttribute("menu", existingMenu);
+        model.addAttribute("navbarTitle", "Change Menu");
 
         return "form-change-menu-restoran";
     }
