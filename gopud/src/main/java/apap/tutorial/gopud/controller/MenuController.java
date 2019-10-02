@@ -61,19 +61,26 @@ public class MenuController {
     }
 
     //delete menu
-    @RequestMapping(path = "/restoran/menu/delete/{id}", method = RequestMethod.GET)
-    public String deleteMenu(@PathVariable Long id, Model model) {
-        // Mengambil objek MenuModel yang dituju
-        MenuModel menu = menuService.getMenuById(id).get();
-//        if (menu.get RestoranService.getRestoranByIdRestoran(idRestoran).get().isEmpty()) {
+//    @RequestMapping(path = "/restoran/menu/delete/{id}", method = RequestMethod.GET)
+//    public String deleteMenu(@PathVariable Long id, Model model) {
+//        // Mengambil objek MenuModel yang dituju
+//        MenuModel menu = menuService.getMenuById(id).get();
+////        if (menu.get RestoranService.getRestoranByIdRestoran(idRestoran).get().isEmpty()) {
+////            model.addAttribute("menu", menu);
+////            return "delete-menu-gagal";
+////        }
+////        else {
+//            menuService.deleteMenu(menu);
 //            model.addAttribute("menu", menu);
-//            return "delete-menu-gagal";
-//        }
-//        else {
+//            return "delete-menu";
+////        }
+//    }
+    @RequestMapping(value="/restoran/menu/delete", method = RequestMethod.POST)
+    private String delete(@ModelAttribute RestoranModel restoran, Model model) {
+        for (MenuModel menu : restoran.getListMenu()) {
             menuService.deleteMenu(menu);
-            model.addAttribute("menu", menu);
-            return "delete-menu";
-//        }
+        }
+        return "delete-menu";
     }
 
 }
