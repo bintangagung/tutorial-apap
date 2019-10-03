@@ -115,10 +115,13 @@ Tutorial 4
 anda menyelesaikan latihan nomor 2.
 membuat navbar menjadi dimanis sesuai dengan navbar title HTML. pertama saya membuat variable baru sebagai penanda title di fragment,
 di fragment diberikan default "navbar" jika tidak ada title dan jika ada navbar title penamaan sesuai dengan nama title.
-nama title tersebut di control setiap method, dengan menambahkan attribut untuk navbar title yangakan dirender ke HTML
+nama title tersebut di control setiap method, dengan menambahkan attribut untuk navbar title yang akan dirender ke HTML
 2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda
 menyelesaikan latihan nomor 3
 3. Jelaskan perbedaan th:include dan th:replace
 th: replace - Menggantikan host tag dengan fragmen. Sehingga, akan menghapus host tag dan sebagai penggantinya akan menambahkan fragmen yang ditentukan termasuk attibut yang muncul di HTML.
 th: include - Memasukkan fragmen yang ditentukan sebagai body dari tag hostnya tetapi tidak termasuk attribut yang muncul di HTML.
 4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+thymeleaf memberikan fungsi-fungsi khusus yang hanya dengan menggunakan attribut dalam HTML yang nantinya setelah di jalankan di server datanya akan diolah dan ditampilkan sesuai dengan real datanya.
+th:object memiliki banyak fungsi, pemilihan "object" bergantung dengan keperluan dan tujuannya.
+antara lain :text untuk menampilkan text, include replace dan insert untuk mengoperasikan fragmen, action untuk memindah/menghubungkan ke HTML lainnya, style untuk mengubah gaya, value dan lainnya.
