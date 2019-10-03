@@ -35,7 +35,6 @@
                 <th>Durasi Penyajian</th>
             </tr>
             </thead>
-            <!--    listmenu atau menulist-->
             <tr th:each="menu, iterationStatus : *{listMenu}"
                 th:style="${iterationStatus.even} ? 'color: blue' ">
                 <td th:text="${iterationStatus.count}"></td>

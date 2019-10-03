@@ -22,28 +22,12 @@
         </thead>
         <tbody>
         <tr th:each="menu, rowStat : *{listMenu}">
-<!--            <td th:text="${rowStat.count}">1{</td>-->
-<!--            <td>-->
-<!--                <select th:field="rows[__${rowStat.index}__].variety">-->
-<!--                    <option th:each="var : ${allVarieties}"-->
-<!--                            th:value="{var.id}"-->
-<!--                            th:text="{var.nama}">Thymus Thymi</option>-->
-<!--                </select>-->
-<!--            </td>-->
             <td><input type="text" th:field="*{listMenu[__${rowStat.index}__].nama}"/></td>
             <td><input type="text" th:field="*{listMenu[__${rowStat.index}__].deskripsi}"/></td>
             <td><input type="number" th:field="*{listMenu[__${rowStat.index}__].harga}"/></td>
             <td><input type="number" th:field="*{listMenu[__${rowStat.index}__].durasiMasak}"/></td>
             <td><button type="submit" name="removeRow" class="btn btn-sm btn-danger" th:value="${rowStat.index}">Delete</button></td>
         </tr>
-
-<!--        <tr>-->
-<!--            <td><input type="text" name="nama"/></td>-->
-<!--            <td><input type="text" name="deskripsi"/></td>-->
-<!--            <td><input type="number" name="harga"/></td>-->
-<!--            <td><input type="number" name="durasiMasak"/></td>-->
-
-<!--        </tr>-->
         </tbody>
     </table>
     <br>
