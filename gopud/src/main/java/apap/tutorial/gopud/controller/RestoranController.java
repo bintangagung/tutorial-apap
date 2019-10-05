@@ -34,6 +34,7 @@ public class RestoranController {
         // Membuat objek RestoranModel
         RestoranModel newRestoran = new RestoranModel();
         model.addAttribute("restoran", newRestoran);
+        model.addAttribute("navbarTitle", "Add Restoran");
         // Return view template
         return "form-add-restoran";
     }
@@ -57,12 +58,13 @@ public class RestoranController {
         // Mengambil objek RestoranModel yang dituju
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
 
+        List<MenuModel> menuList = menuService.getListMenuOrderByHargaAsc(restoran.getIdRestoran());
+        restoran.setListMenu(menuList);
+
         // Add model restoran ke "resto" untuk dirender
         model.addAttribute("resto", restoran);
+        model.addAttribute("navbarTitle", "View Restoran");
 
-        List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
-        model.addAttribute("menuList", menuList);
-    
         // return view template
         return "view-restoran";
     }
@@ -73,6 +75,7 @@ public class RestoranController {
         //mengambil existing data restoran
         RestoranModel existingRestoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
         model.addAttribute("restoran", existingRestoran);
+        model.addAttribute("navbarTitle", "Change Restoran");
 
         return "form-change-restoran";
     }
@@ -94,6 +97,7 @@ public class RestoranController {
 
         model.addAttribute("restoranList", restoranList);
         model.addAttribute("restoranListAlphabet", restoranListAlphabet);
+        model.addAttribute("navbarTitle", "View All Restoran");
 
         return "view-all-restoran";
     }
@@ -106,10 +110,12 @@ public class RestoranController {
         if (restoran.getListMenu().isEmpty()) {
             restoranService.deleteRestoran(restoran);
             model.addAttribute("restoran", restoran);
+            model.addAttribute("navbarTitle", "Delete Restoran");
             return "delete-restoran";
         }
         else {
             model.addAttribute("restoran", restoran);
+            model.addAttribute("navbarTitle", "Delete Restoran Gagal");
             return "delete-restoran-gagal";
         }
     }
