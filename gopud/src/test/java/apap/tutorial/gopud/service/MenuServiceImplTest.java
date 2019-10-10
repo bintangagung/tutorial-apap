@@ -29,7 +29,7 @@ public class MenuServiceImplTest {
     private RestoranModel createDummyRestoran(){
         RestoranModel restoran = new RestoranModel();
         restoran.setNama("mekdi");
-        restoran.setAlamat("Kemiri Muka");
+        restoran.setAlamat("kelapa dua");
         restoran.setNomorTelepon(14045);
 
         return restoran;
@@ -37,10 +37,10 @@ public class MenuServiceImplTest {
 
     private MenuModel createDummyMenu(){
         MenuModel menu = new MenuModel();
-        menu.setNama("ayam");
-        menu.setHarga(BigInteger.valueOf(15000));
+        menu.setNama("bintang");
+        menu.setHarga(BigInteger.valueOf(20000));
         menu.setDurasiMasak(10);
-        menu.setDeskripsi("enak");
+        menu.setDeskripsi("kerensekali");
 
         return menu;
     }
@@ -81,10 +81,10 @@ public class MenuServiceImplTest {
 
         MenuModel dataFromOptional = dataFromServiceCall.get();
 
-        assertEquals("ayam", dataFromOptional.getNama());
-        assertEquals(BigInteger.valueOf(15000), dataFromOptional.getHarga());
+        assertEquals("bintang", dataFromOptional.getNama());
+        assertEquals(BigInteger.valueOf(20000), dataFromOptional.getHarga());
         assertEquals(Integer.valueOf(10), dataFromOptional.getDurasiMasak());
-        assertEquals("enak", dataFromOptional.getDeskripsi());
+        assertEquals("kerensekali", dataFromOptional.getDeskripsi());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class MenuServiceImplTest {
     public void whenChangeMenuCalledItShouldChangeMenuData(){
         MenuModel updatedData = createDummyMenu();
         updatedData.setId((long)1);
-        updatedData.setDeskripsi("mantab");
+        updatedData.setDeskripsi("goodjob");
 
         when(menuDb.findById(1L)).thenReturn(Optional.of(updatedData));
 
@@ -115,10 +115,17 @@ public class MenuServiceImplTest {
 
         MenuModel dataFromServiceCall = menuService.changeMenu(updatedData);
 
-        assertEquals("ayam", dataFromServiceCall.getNama());
-        assertEquals(BigInteger.valueOf(15000), dataFromServiceCall.getHarga());
+        assertEquals("bintang", dataFromServiceCall.getNama());
+        assertEquals(BigInteger.valueOf(20000), dataFromServiceCall.getHarga());
         assertEquals(Integer.valueOf(10), dataFromServiceCall.getDurasiMasak());
-        assertEquals("mantab", dataFromServiceCall.getDeskripsi());
+        assertEquals("goodjob", dataFromServiceCall.getDeskripsi());
     }
-    
+
+    @Test
+    public void whenChangeMenuCalledButErrorItShouldInvokeNull(){
+        MenuModel updatedData = null;
+
+        assertEquals(null, menuService.changeMenu(updatedData));
+    }
+
 }

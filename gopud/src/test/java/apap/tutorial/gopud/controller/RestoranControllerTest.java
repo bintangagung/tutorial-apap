@@ -1,5 +1,6 @@
 package apap.tutorial.gopud.controller;
 
+import apap.tutorial.gopud.model.MenuModel;
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.service.MenuService;
 import apap.tutorial.gopud.service.RestoranService;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +47,6 @@ public class RestoranControllerTest {
         mockMvc.perform(get("/")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-
     private RestoranModel generateDummyRestoranModel(int count) {
         RestoranModel dummyRestoranModel = new RestoranModel();
         dummyRestoranModel.setNama("dummy " + count);
@@ -54,6 +55,17 @@ public class RestoranControllerTest {
         dummyRestoranModel.setNomorTelepon(14000);
         dummyRestoranModel.setListMenu(new ArrayList<>());
         return dummyRestoranModel;
+    }
+
+    private MenuModel generateDummyMenuModel(int count, RestoranModel restoran) {
+        MenuModel dummyMenuModel = new MenuModel();
+        dummyMenuModel.setNama("dummy " + count);
+        dummyMenuModel.setDeskripsi("desc " + count);
+        dummyMenuModel.setId((long)count);
+        dummyMenuModel.setDurasiMasak(count);
+        dummyMenuModel.setHarga(BigInteger.valueOf(1000*count));
+        dummyMenuModel.setRestoran(restoran);
+        return dummyMenuModel;
     }
 
     @Test
@@ -93,7 +105,54 @@ public class RestoranControllerTest {
     }
 
     @Test
-    public void whenRestoranAddPostFormItShouldSuccessfullyReturnToRightView() throws Exception {
+    public void whenViewRestoranAccessItShouldShowRestoranData() throws Exception {
+        RestoranModel restoran = generateDummyRestoranModel(1);
+        List<MenuModel> allMenu = new ArrayList<>();
+        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+            allMenu.add(generateDummyMenuModel(loopTimes, restoran));
+        }
+        when(restoranService.getRestoranByIdRestoran(1L)).thenReturn(Optional.of(restoran));
+        when(menuService.getListMenuOrderByHargaAsc(1L)).thenReturn(allMenu);
+        mockMvc.perform(get("/restoran/view?idRestoran=1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(content().string(Matchers.containsString("Informasi Restoran")))
+                .andExpect(content().string(Matchers.containsString("Daftar Menu")))
+                .andExpect(model().attribute("resto",
+                        allOf(
+                                hasProperty("idRestoran", is(1L)),
+                                hasProperty("nama", is("dummy 1")),
+                                hasProperty("alamat", is("alamat 1"))
+                        )
+                ))
+                .andExpect(model().attribute("resto", hasProperty("listMenu", hasSize(3))))
+                .andExpect(model().attribute("resto", hasProperty("listMenu", hasItem(
+                        allOf(
+                                hasProperty("id", is(1L)),
+                                hasProperty("nama", is("dummy 1")),
+                                hasProperty("harga", is(BigInteger.valueOf((long)1000)))
+                        )
+                ))))
+                .andExpect(model().attribute("resto", hasProperty("listMenu", hasItem(
+                        allOf(
+                                hasProperty("id", is(2L)),
+                                hasProperty("nama", is("dummy 2")),
+                                hasProperty("harga", is(BigInteger.valueOf((long)2000)))
+                        )
+                ))))
+                .andExpect(model().attribute("resto", hasProperty("listMenu", hasItem(
+                        allOf(
+                                hasProperty("id", is(2L)),
+                                hasProperty("nama", is("dummy 2")),
+                                hasProperty("harga", is(BigInteger.valueOf((long)2000)))
+                        )
+                ))));
+        verify(restoranService, times(1)).getRestoranByIdRestoran(1L);
+        verify(menuService, times(1)).getListMenuOrderByHargaAsc(1L);
+    }
+
+    @Test
+    public void whenRestoranAddPostFormItShouldSuccessfullyReturnToRightView() throws
+            Exception {
         String nama = "Dummy Restoran";
         String alamat = "Dummy Alamat";
         mockMvc.perform(post("/restoran/add")
