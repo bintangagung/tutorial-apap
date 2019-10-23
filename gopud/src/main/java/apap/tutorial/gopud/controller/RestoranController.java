@@ -1,5 +1,6 @@
 package apap.tutorial.gopud.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import apap.tutorial.gopud.model.MenuModel;
@@ -119,6 +120,5 @@ public class RestoranController {
             return "delete-restoran-gagal";
         }
     }
-
 
 }

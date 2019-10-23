@@ -110,7 +110,7 @@ FetchType.EAGER berfungsi ketika kita mengeload suatu table dari database, datab
 
 
 
-Tutorial 4
+## Tutorial 4
 1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana
 anda menyelesaikan latihan nomor 2.
 membuat navbar menjadi dimanis sesuai dengan navbar title HTML. pertama saya membuat variable baru sebagai penanda title di fragment,
@@ -128,3 +128,35 @@ th: include - Memasukkan fragmen yang ditentukan sebagai body dari tag hostnya t
 thymeleaf memberikan fungsi-fungsi khusus yang hanya dengan menggunakan attribut dalam HTML yang nantinya setelah di jalankan di server datanya akan diolah dan ditampilkan sesuai dengan real datanya.
 th:object memiliki banyak fungsi, pemilihan "object" bergantung dengan keperluan dan tujuannya.
 antara lain :text untuk menampilkan text, include replace dan insert untuk mengoperasikan fragmen, action untuk memindah/menghubungkan ke HTML lainnya, style untuk mengubah gaya, value dan lainnya.
+
+
+
+## Tutorial 5
+1. Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.
+Bagian given berupa inisiasi dummyRestoran, men-set attribut-attribut dari dummy tersebut dan mengatur kembalian database ketika menggunakan service.
+Bagian when berupa pemanggilan mockMvc.perform(get("/restoran/view?idRestorn=1")) yang akan berinteraksi dengan controller langsung dan mengembalikan halaman berdasarkan controller.
+Bagian and then berupa pemanggilan method .andExpect(...) yang berfungsi untuk melakukan pengecekan interaksi yang diharapkan.
+2. Jelaskan perbedaan line coverage dan logic coverage.
+line coverage hanya meng-cover kode dengan menghitung jumlah line saja berdasarkan kode yang yang diuji saat testing.
+logic coverage meng-handle logic code yang berupa branching (seperti if else), sehingga nantinya logic coverage dapat membantu penambahan line coverage secara keseluruhan.
+3. Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
+seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin terjadi?
+unit test terlebih dahulu baru melakukan implementasi code dari apa yang sudah di test.
+Hal tersebut dilakukan agar meminimalisir error, serta berfungsi untuk membuat gambaran dan batasan code yang akan diimplementasikan.
+Jika urutannya dibalik, maka resiko untuk terjadi error meningkat, dan (mungkin) baru diketahui pada saat fase testing, dimana hal tersebut sangat tidak efisien dan memakan waktu.
+4. [Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam
+perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari
+perhitungan code coverage
+Karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengganggu skor akhir dari penghitungan coverage.
+Hal-hal yang dapat menyebabkan di exlude antara lain file built-in , file yang mempunyai code coverage rendah dan akan menimbukan kerusakan coverage secara keseluruhan dan serta file configurasi yang tidak terdapat bisnis proses didalamnya.
+
+
+Coverage di Menu Service
+<a href="https://ibb.co/Kh4pqg9"><img src="https://i.ibb.co/Kh4pqg9/saa.png" alt="saa" border="0"></a>
+
+Coverage sebelum latihan 2 dikerjakan dan setelah dikerjakan
+<a href="https://ibb.co/8DJ8yrj"><img src="https://i.ibb.co/8DJ8yrj/controller.png" alt="controller" border="0"></a>
+<a href="https://ibb.co/Czt52B8"><img src="https://i.ibb.co/Czt52B8/controller-setelah.png" alt="controller-setelah" border="0"></a>
+
+
+
