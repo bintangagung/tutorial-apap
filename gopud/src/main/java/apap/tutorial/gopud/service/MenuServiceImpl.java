@@ -30,17 +30,18 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public MenuModel changeMenu(MenuModel menuModel) {
+        try {
         //mengambil object restoran yang ingin diubah
         MenuModel targetMenu = menuDb.findById(menuModel.getId()).get();
 
-        try {
             targetMenu.setNama(menuModel.getNama());
             targetMenu.setHarga(menuModel.getHarga());
             targetMenu.setDurasiMasak(menuModel.getDurasiMasak());
             targetMenu.setDeskripsi(menuModel.getDeskripsi());
             menuDb.save(targetMenu);
             return targetMenu;
-        } catch (NullPointerException nullException) {
+        }
+        catch (NullPointerException nullException) {
             return null;
         }
     }
