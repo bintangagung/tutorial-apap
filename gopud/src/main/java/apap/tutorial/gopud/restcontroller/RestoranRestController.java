@@ -3,7 +3,6 @@ package apap.tutorial.gopud.restcontroller;
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.rest.RestoranDetail;
 import apap.tutorial.gopud.service.RestoranRestService;
-import apap.tutorial.gopud.service.RestoranService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +38,7 @@ public class RestoranRestController {
             return restoranRestService.getRestoranByIdRestoran(idRestoran);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "ID Restoran"+String.valueOf(idRestoran)+ "Not Found"
-            );
+                    HttpStatus.NOT_FOUND, "ID Restoran"+String.valueOf(idRestoran)+ "Not Found");
         }
     }
 
@@ -54,8 +52,7 @@ public class RestoranRestController {
                     HttpStatus.NOT_FOUND, "Restoran with ID" + String.valueOf(idRestoran) + "Not Found!");
         } catch (UnsupportedOperationException e) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "Restoran still has menu, please delete the menu first!"
-            );
+                    HttpStatus.BAD_REQUEST, "Restoran still has menu, please delete the menu first!");
         }
     }
 
@@ -68,8 +65,7 @@ public class RestoranRestController {
             return restoranRestService.changeRestoran(idRestoran, restoran);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "ID Restoran " +String.valueOf(idRestoran)+ " Not Found"
-            );
+                    HttpStatus.NOT_FOUND, "ID Restoran " +String.valueOf(idRestoran)+ " Not Found");
         }
     }
 
@@ -86,8 +82,6 @@ public class RestoranRestController {
     private Mono<RestoranDetail> postStatus(){
         return restoranRestService.postStatus();
     }
-
-
 
 
 }
