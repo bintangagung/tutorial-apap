@@ -21,7 +21,7 @@ public class MenuRestController {
     @Autowired
     private MenuRestService menuRestService;
 
-    @PostMapping(value = "/menu{idRestoran}")
+    @PostMapping(value = "/menu/{idMenu}")
     private MenuModel createMenu(@Valid @RequestBody MenuModel menu, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             throw new ResponseStatusException(
