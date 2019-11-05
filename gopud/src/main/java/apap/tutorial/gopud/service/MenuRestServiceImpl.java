@@ -3,8 +3,10 @@ package apap.tutorial.gopud.service;
 import apap.tutorial.gopud.model.MenuModel;
 import apap.tutorial.gopud.repository.MenuDb;
 import apap.tutorial.gopud.repository.RestoranDb;
+import apap.tutorial.gopud.rest.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -18,6 +20,12 @@ public class MenuRestServiceImpl implements  MenuRestService {
     private MenuDb menuDb;
     @Autowired
     private RestoranDb restoranDb;
+
+    private final WebClient webClient;
+
+    public MenuRestServiceImpl(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl(Setting.menuUrl).build();
+    }
 
     @Override
     public MenuModel createMenu(MenuModel menu) {

@@ -46,10 +46,10 @@ public class RestoranRestController {
     private ResponseEntity<String> deleteRestoran(@PathVariable("idRestoran") Long idRestoran) {
         try {
             restoranRestService.deleteRestoran(idRestoran);
-            return ResponseEntity.ok("Restoran with ID" + String.valueOf(idRestoran) + "Deleted!");
+            return ResponseEntity.ok("Restoran with ID" + String.valueOf(idRestoran) + " Deleted!");
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Restoran with ID" + String.valueOf(idRestoran) + "Not Found!");
+                    HttpStatus.NOT_FOUND, "Restoran with ID" + String.valueOf(idRestoran) + " Not Found!");
         } catch (UnsupportedOperationException e) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "Restoran still has menu, please delete the menu first!");
