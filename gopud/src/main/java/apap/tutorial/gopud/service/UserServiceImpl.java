@@ -2,7 +2,6 @@ package apap.tutorial.gopud.service;
 
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.model.UserModel;
-import apap.tutorial.gopud.repository.RestoranDb;
 import apap.tutorial.gopud.repository.UserDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +27,23 @@ public class UserServiceImpl implements UserService{
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
+    }
+
+    @Override
+    public UserModel getUserByUsername(String username) {
+        return userDb.findByUsername(username);
+    }
+
+    @Override
+    public UserModel changePassword(UserModel userModel) {
+        UserModel updatePassword = userDb.findByUsername(userModel.getUsername());
+        try {
+            updatePassword.setPassword(userModel.getPassword());
+            userDb.save(updatePassword);
+            return updatePassword;
+        } catch (NullPointerException nullException) {
+            return null;
+        }
     }
 
 }
