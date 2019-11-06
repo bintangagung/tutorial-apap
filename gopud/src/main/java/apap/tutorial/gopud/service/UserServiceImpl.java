@@ -1,6 +1,5 @@
 package apap.tutorial.gopud.service;
 
-import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.model.UserModel;
 import apap.tutorial.gopud.repository.UserDb;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserDb userDb;
 
@@ -35,15 +34,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserModel changePassword(UserModel userModel) {
-        UserModel updatePassword = userDb.findByUsername(userModel.getUsername());
-        try {
-            updatePassword.setPassword(userModel.getPassword());
-            userDb.save(updatePassword);
-            return updatePassword;
-        } catch (NullPointerException nullException) {
-            return null;
-        }
+    public void changePassword(UserModel user, String newPass) {
+        UserModel targetUser = userDb.findByUsername(user.getUsername());
+        user.setPassword(encrypt(newPass));
+        userDb.save(user);
     }
 
 }

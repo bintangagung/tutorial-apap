@@ -1,6 +1,7 @@
 package apap.tutorial.gopud.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,15 +39,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Autowired
-//    public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .passwordEncoder(encoder())
-//                .withUser("nadiem").password(encoder().encode("makarim"))
-//                .roles("USER");
-//    }
+    @Autowired
+    public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .passwordEncoder(encoder())
+                .withUser("nadiem").password(encoder().encode("makarim"))
+                .roles("USER");
+    }
 
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
 
