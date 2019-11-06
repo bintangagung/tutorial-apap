@@ -160,3 +160,16 @@ Coverage sebelum latihan 2 dikerjakan dan setelah dikerjakan
 
 
 
+
+
+
+## Tutorial 6
+1. Apa itu postman? Apa kegunaan dari postman?
+sebuah aplikasi (berupa plugin) untuk browser chrome, 
+fungsinya adalah sebagai REST Client atau aplikasi yang digunakan untuk melakukan uji coba REST API yang telah kita buat.
+agar bisa mengakses tanpa membuat terlebih dahulu sistem yang menerima API dari kita.
+2. Apa kegunaan dari annotation @JsonIgnoreProperties?
+untuk menentukan properties yang akan diabaikan ketika dibaca oleh JSON
+3. Apa itu ResponseEntity dan apa kegunaannya?
+ResponseEntity dapat mewakili HTTP response yang termasuk header, body, dan status. Sehingga dapat digunakan untuk mengkonfigurasi response HTTP sepenuhnya.
+
