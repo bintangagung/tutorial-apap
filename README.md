@@ -173,3 +173,29 @@ untuk menentukan properties yang akan diabaikan ketika dibaca oleh JSON
 3. Apa itu ResponseEntity dan apa kegunaannya?
 ResponseEntity dapat mewakili HTTP response yang termasuk header, body, dan status. Sehingga dapat digunakan untuk mengkonfigurasi response HTTP sepenuhnya.
 
+
+
+
+
+
+## Tutorial 7
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi ! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+otentikasi adalah proses memeriksa detail pengguna untuk mengidentifikasinya dan memberikan akses ke sistem.
+otorisasi adalah proses memeriksa hak akses user yang diotentikasi untuk mengakses resource suatu sistem.
+Otentikasi dan otorisasi adalah dua mekanisme yang digunakan dalam sistem ini untuk mengamankan informasi.
+Otentikasi digunakan untuk mengidentifikasi user tertentu agar dapat mengakses sistem. Setelah mengautentikasi user ke sistem, otorisasi memberikan batasan yang diperlukan dan mengakses yang dimiliki user.
+
+2. Apa itu BCryptPasswordEncoder ? Jelaskan secara singkat cara kerjanya!
+Bcrypt adalah salah satu password hashing yang telah dipublikasikan pada tahun 1999.
+Algoritma bcrypt sangat bergantung pada key setup pada eksblowfish algoritma karena waktu terlama untuk mengenerate password.
+algoritma bawaan untuk melakukan hash yaitu menggunakan BCRYPT dan akan menghasilkan output sepanjang 60 karakter.
+Sangat disarankan untuk membuat field data pada database sepanjang 255 karakter, sebab output hasil hash dapat lebih panjang sesuai dengan algoritma yang digunakan.
+
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java ?
+universally unique identifier (UUID) digunakan untuk mengidentifikasi informasi dalam sistem yang memiliki tujuan unik.
+Di dalam UserModel.java setiap user memiliki otorisasi yang berbeda tetapi juga memiliki sesuatu hal yang sama, untuk itu di UserModel.java terdapat UUID
+
+4. Apa kegunaan class UserDetailsServiceImpl.java ? Mengapa harus ada class tersebut
+padahal kita sudah memiliki class UserRoleServiceImpl.java?
+untuk membatasi atau memberikan hak akses suatu role terharap resource/layanan di dalam sistem. 
