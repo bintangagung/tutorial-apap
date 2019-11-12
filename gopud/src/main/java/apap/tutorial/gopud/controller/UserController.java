@@ -17,8 +17,13 @@ public class UserController {
 
     @RequestMapping(value = "add/user", method = RequestMethod.POST)
     private String addUserSubmit(@ModelAttribute UserModel user) {
-        userService.addUser(user);
-        return "home";
+        if (userService.checkUsername(user.getUsername())) {
+            userService.addUser(user);
+            return "home";
+        }
+        else {
+            return "home";
+        }
     }
 
     @RequestMapping(value = "user/updatePassword", method = RequestMethod.GET)

@@ -40,6 +40,16 @@ public class UserServiceImpl implements UserService {
         userDb.save(user);
     }
 
+    @Override
+    public boolean checkUsername(String username) {
+        for (UserModel usernameLama : userDb.findAll()) {
+            if (username.equals(usernameLama.getUsername())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 
 
