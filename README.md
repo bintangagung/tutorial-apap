@@ -214,32 +214,52 @@ dan juga memberikan otorisasi yang dimiliki user sesuai dengan role yang dimilik
 
 **Latihan 1**
 Untuk mengerjakan latihan nomor satu, ditambahkan prop baru pada item.js berupa checkbox yang berisi boolean dan digunakan pada app.js dengan value yang berbeda antara bagian Our menu dan My favorites. Pada bagian Our menu, checkbox diisi dengan value false karena tidak diinginkan menampilkan checkbox dan pada bagian My favorites diisi dengan true
+
 Prop pada item :
+
 ![image](https://i.ibb.co/M799XTY/1-1.png)
+
 Item pada list :
+
 ![image](https://i.ibb.co/GcbJpHJ/1-2.png)
+
 List *Our menu* pada app:
+
 ![image](https://i.ibb.co/wJbDgKj/1-3.png)
+
 List *My favorite* pada app:
+
 ![image](https://i.ibb.co/Tgdnqkq/1-4.png)
 
 **Latihan 2**
 Untuk mengerjakan latihan nomor dua, saya memisahkan fungsi yang dilakukan antara bagian Our menu dan My favorites saat diklik. Saat menu pada Our menu diklik, maka akan menjalankan fungsi handleItemclick. Sementara menu pada My favorite diklik, maka akan menjalankan fungsi handleFavItemClick. Fungsi handleItemclick berfungsi untuk menambahkan item pada list favItems dan Fungsi handleFavItemclick berfungsi untuk menghapus item pada list favItems.
+
 Fungsi handleItemClick :
+
 ![image](https://i.ibb.co/1MgGDBQ/2-1.png)
+
 Fungsi handleFavItemClick :
+
 ![image](https://i.ibb.co/0CzGKrt/2-2.png)
 
 **Latihan 3**
 Saya akan melakukan binding state Checked dengan fungsi handleChange(). Fungsi handleChange berfungsi untuk mengidentifikasi apakah checkbox di pencet atau tidak Sehingga jika bisa melakukan render untuk varible content yang berisi tentang isi dari favorite items yang kita sudah klik.
+
 Inisiasi konstruktor dan fungsi handleChange :
+
 ![image](https://i.ibb.co/SBxKwbs/3-1.png)
+
 Konstanta yang akan dirender:
+
 ![image](https://i.ibb.co/k6mPgMg/3-2.png)
+
 Return bagian yang akan ditampilkan pada layar:
+
 ![image](https://i.ibb.co/7SzTZ61/3-3.png)
 
 **Latihan 4**
 Jika daftar favorit kosong, maka halaman akan menampilkan isi dari EmptyState. Saya akan mengecek isi dari list favItems sehingga saya bisa menampilkan favorite items. Namun, jika tidak ada isi pada list tersebut saya sudah membuat component EmptyState.js yang berisi html tentang pemberitahuan bahwa user tidak memiliki favorite item yang terpilih.
+
 Isi dari EmptyState.js:
+
 ![image](https://i.ibb.co/5RcNFfw/4-1.png)
