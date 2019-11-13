@@ -173,3 +173,36 @@ untuk menentukan properties yang akan diabaikan ketika dibaca oleh JSON
 3. Apa itu ResponseEntity dan apa kegunaannya?
 ResponseEntity dapat mewakili HTTP response yang termasuk header, body, dan status. Sehingga dapat digunakan untuk mengkonfigurasi response HTTP sepenuhnya.
 
+
+
+
+
+
+## Tutorial 7
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi ! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+otentikasi adalah proses memeriksa detail pengguna untuk mengidentifikasinya dan memberikan akses ke sistem.
+otorisasi adalah proses memeriksa hak akses user yang diotentikasi untuk mengakses resource suatu sistem.
+Otentikasi dan otorisasi adalah dua mekanisme yang digunakan dalam sistem ini untuk mengamankan informasi.
+Otentikasi digunakan untuk mengidentifikasi user tertentu agar dapat mengakses sistem. Setelah mengautentikasi user ke sistem, otorisasi memberikan batasan yang diperlukan dan mengakses yang dimiliki user.
+
+2. Apa itu BCryptPasswordEncoder ? Jelaskan secara singkat cara kerjanya!
+BCryptPasswordEncoder adalah salah satu tool yang digunakan untuk melakukan encode terhadap password yang ada di Spring. Jadi untuk kepentingan Security,
+suatu password tidak boleh disimpan dalam bentuk plain. Sehingga perlu di encode dengan memanfaatkan hashing. 
+Cara penggunaannya adalah dengan membuat objek BCryptPasswordEncoder, lalu objek tersebut dipanggil 
+dan menggunakan method encode untuk melakukan encode terhadap password tersebut
+
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java ?
+universally unique identifier (UUID) adalah kumpulan 32 karakter (String) yang dibuat secara acak (random) dengan teknik khusus yang dijamin unik untuk setiap data.
+Dalam waktu 1 detik pun, jika di-generate 1000 UUID, kecil kemungkinan ada UUID yang sama.
+Sehingga lebih cocok untuk digunakan sebagai Primary Key. Sehingga pada UserModel.java memakai UUID untuk keunikan antar user dan juga keamanan.
+UUID tersebut tentu saja sulit ditebak oleh pengguna karena tidak mempunyai pola khusus.
+Jika ada hacker yang ingin menggunakan program looping untuk mendapatkan seluruh data User, maka dia perlu membuat banyak kombinasi 32 karakter tersebut, tentu tidak mudah dan membutuhkan waktu lama.
+
+4. Apa kegunaan class UserDetailsServiceImpl.java ? Mengapa harus ada class tersebut
+padahal kita sudah memiliki class UserRoleServiceImpl.java?
+untuk membatasi atau memberikan hak akses suatu role terharap resource/layanan di dalam sistem.
+UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam class ini dilakukan extends terhadap UserServiceDetail dari spring security.
+Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db
+dan juga memberikan otorisasi yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan user
+
