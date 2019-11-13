@@ -1,49 +1,89 @@
-import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React from "react";
+import EmptyState from "./components/EmptyState";
 import List from "./components/List";
 import dummyItems from "./items.json";
 
 export default class App extends React.Component {
-  
-  state = {
+  constructor() {
+    super();
+
+    this.state = { checked: false };
+    this.state = {
       favItems: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
+
+  handleItemClick = item => {
+    // immutability
+    const newItems = [...this.state.favItems];
+    const newItem = { ...item };
+    // find index of item with id
+    const targetInd = newItems.findIndex(it => it.id === newItem.id);
+    if (targetInd < 0) newItems.push(newItem);
+    this.setState({ favItems: newItems });
   };
 
+  handleFavItemClick = item => {
+    // immutability
+    const newItems = [...this.state.favItems];
+    const newItem = { ...item };
+    // find index of item with id
+    const targetInd = newItems.findIndex(it => it.id === newItem.id);
+    newItems.splice(targetInd, 1);
+    this.setState({ favItems: newItems });
+  };
 
-handleItemClick = item => {
-  const newItems = [...this.state.favItems];
-  const newItem = {...item};
-  const targetInd = newItems.findIndex(it => it.id === newItem.id);
-  if (targetInd < 0 ) newItems.push(newItem);
-  else newItems.splice(targetInd, 1);
-  this.setState({favItems: newItems});    
-};
-  
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
 
+  // for class based component, you need to provide render
+  // function
   render() {
-    const{favItems} = this.state;
+    const { favItems } = this.state;
+    const content = 
+    <div className="col-sm"> 
+    <List
+      title="My Favorite"
+      items={favItems}
+      onItemClick={this.handleFavItemClick}
+      checkbox={true}
+    /> 
+    </div>
+    
+    const contentFav = this.state.checked ? favItems.length > 0 ? content :<EmptyState/> : null
+
     return (
       <div className="container-fluid">
         <h1 className="text-center">
           Welcome!
-          <small>Class-based</small>
+    <small>Class-based</small>
         </h1>
         <div className="container pt-3">
           <div className="row">
             <div className="col-sm">
-              <List 
-              tittle="Our Menu"
-              items={dummyItems}
-              onItemClick={this.handleItemClick}
+              <List
+                title="Our Menu"
+                items={dummyItems}
+                onItemClick={this.handleItemClick}
+                checkbox={false}
               />
             </div>
             <div className="col-sm">
-              <List 
-              tittle="My Favorite"
-              items={favItems}
-              onItemClick={this.handleItemClick}
-              />
+              <input
+                type="checkbox"
+                checked={ this.state.checked }
+                onChange={this.handleChange} />
+              {contentFav}
             </div>
           </div>
         </div>
@@ -51,27 +91,3 @@ handleItemClick = item => {
     );
   }
 }
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
