@@ -261,5 +261,4 @@ Return bagian yang akan ditampilkan pada layar:
 Jika daftar favorit kosong, maka halaman akan menampilkan isi dari EmptyState. Saya akan mengecek isi dari list favItems sehingga saya bisa menampilkan favorite items. Namun, jika tidak ada isi pada list tersebut saya sudah membuat component EmptyState.js yang berisi html tentang pemberitahuan bahwa user tidak memiliki favorite item yang terpilih.
 
 Isi dari EmptyState.js:
-
 ![image](https://i.ibb.co/5RcNFfw/4-1.png)
