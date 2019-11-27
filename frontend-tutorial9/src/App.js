@@ -5,12 +5,12 @@ import Restorans from './containers/Restorans/Restorans' ;
 class App extends Component {
   render (){
       return (
-        < div >
+        < React.Fragment >
         < Layout >
           {/* < p > Hello, World! </ p > */}
           < Restorans />
         </ Layout >
-      </ div >
+      </ React.Fragment >
       );
   }
 }
