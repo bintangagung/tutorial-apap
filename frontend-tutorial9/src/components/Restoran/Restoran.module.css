@@ -1,4 +1,4 @@
-.Restoran {
+.Restoran{
     width: 50%;
     border: 1px solid #ccc;
     box-shadow: 0 2px 3px;
@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-.EditRestoranButton {
+.EditRestoranButton{
     background-color: lightblue;
     outline: none;
     cursor: pointer;
@@ -17,9 +17,10 @@
     font-size: 1.2em;
     padding: 2px 8px;
     box-shadow: 2px 2px 2px #36622b;
+    margin-right: 5px;
 }
 
-.DeleteRestoranButton {
+.DeleteRestoranButton{
     background-color: lightpink;
     outline: none;
     cursor: pointer;

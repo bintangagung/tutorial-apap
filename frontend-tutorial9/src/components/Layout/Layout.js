@@ -1,10 +1,8 @@
-import React from "react" ;
+import React from "react";
 
 const layout = props =>
-    < React.Fragment >
-        < main className = "Content" >
-            { props.children }
-        </ main >
-    </React.Fragment >
-
+    <main className="Content">
+        {props.children}
+    </main>
+    
 export default layout;
