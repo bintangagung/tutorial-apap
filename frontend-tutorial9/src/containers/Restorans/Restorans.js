@@ -204,7 +204,7 @@ class Restorans extends Component{
                 <Modal show={this.state.isCreate || this.state.isEdit}
                     modalClosed={this.canceledHandler}>
                         {this.renderForm()}
-                    </Modal>
+                </Modal>
                 <div className={classes.Title}>All Restoran</div>
                 <div className={classes.ButtonLayout}>
                     <button

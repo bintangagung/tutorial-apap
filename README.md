@@ -263,3 +263,24 @@ Jika daftar favorit kosong, maka halaman akan menampilkan isi dari EmptyState. S
 Isi dari EmptyState.js:
 
 ![image](https://i.ibb.co/5RcNFfw/4-1.png)
+
+
+
+## Tutorial 9
+
+**Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?**
+Mengganti state pada method submitAddRestoran menjadi string kosong agar setelah menekan tombol submit pada saat tambah restoran, state yg berisi data restoran akan menjadi kosong
+Mengganti state pada method submitEditRestoran menjadi string kosong agar setelah menekan tombol submit pada saat edit restoran, state yg berisi data restoran akan menjadi kosong
+
+**Jelaskan fungsi dari async dan await!**
+async ensures that the function returns a promise
+await makes JavaScript wait until that promise settles and returns its result.
+
+**Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada pertanyaan ini.**
+
+**Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.**
+componentDidMount: saat component berhasil di render untuk pertama kalinya
+shouldComponentUpdate: dipanggil setelah componentWillReceiveProps dipanggil dan akan mengembalikan antara true atau false. apabila true, maka component akan di update, sebaliknya apabila false maka component tidak di update
+componentDidUpdate: dipanggil setelah render berhasil dijalankan
+componentWillReceiveProps: saat sebuah instansi dari suatu component di update. dipanggil sebelum render dimulai
+componentWillUnmount: dpnaggil sebelum suatu component dipindahkan dari DOM. jika suatu component membutuhkan cleanup, maka seharusnya ditaruh di dalam componentWillMount
