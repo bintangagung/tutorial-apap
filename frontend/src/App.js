@@ -46,6 +46,19 @@ export default class App extends React.Component {
     })
   }
 
+  
+  handleTemaClick = item => {
+      this.setState({
+        background : "#333"
+      })
+  };
+
+  handleChange() {
+    this.setState({
+      background : "#333",
+    })
+  }
+
   // for class based component, you need to provide render
   // function
   render() {
@@ -68,6 +81,7 @@ export default class App extends React.Component {
           Welcome!
     <small>Class-based</small>
         </h1>
+        <h4 onItemsClick={this.handleTemaClick} >change tema</h4>
         <div className="container pt-3">
           <div className="row">
             <div className="col-sm">
